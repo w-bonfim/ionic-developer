@@ -1,0 +1,1 @@
+Aplicação em Ionic (Baseada no curso de ionic provido por Charles Franca)
