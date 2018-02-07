@@ -1,1 +1,1 @@
-Aplicação em Ionic (Baseada no curso de ionic provido por Charles Franca)
+Aplicação em Ionic (Baseada no curso de ionic 3 provido por Charles Franca)
