@@ -13,21 +13,13 @@ import { MoovieProvider } from '../../providers/moovie/moovie'; // Api movie
 @Component({
   selector: 'page-feed',
   templateUrl: 'feed.html',
-  providers: [ // 1° o provider responsavel pela chamada da api
+  providers: [ // 1° o provider responsavel pela chamada da api, pode ser registrado na pagina que vai consumir ou no arquivo global app.module.ts
     MoovieProvider
   ]
 })
 export class FeedPage {
 
-  public objeto_feed = {
-    titulo: "Charles Franca do Codigo",
-    data: "November 5, 1955",
-    descricao: "Estou criando um app incrivel...",
-    qntd_likes: 12,
-    qntd_coments: 4,
-    time_coments: "11h ago"
-  }
-  public nome_usuario: string = "Charles Franca do Codigo";
+  public lista_filmes = new Array<any>(); // criando um array de qualquer coisa 
 
   constructor(  //2° injeção de dependência no construtor
     public navCtrl: NavController,
@@ -35,18 +27,14 @@ export class FeedPage {
     private movieProvider: MoovieProvider ) {
   }
 
-  public somaDoisnumeros(num1:number, num2:number): void{  //função do tipo void não tem retorno
-    var numero = num1 + num2;
-    alert(numero)
-  }
-
-
   ionViewDidLoad() { // 3° chamar a rota responsavel
     this.movieProvider.getPopularMovie().subscribe(
       data=>{
         const response = (data as any);  //transformando varivel de retorno, em tipo any (qualquer coisa) ,  para o angular não fazer validação de tipagem
-        const obejeto_retorno = JSON.parse(response._body);
-        console.log(obejeto_retorno); 
+        const obejeto_retorno = JSON.parse(response._body); //transformando os dados de retorno da api em JSON
+        this.lista_filmes = obejeto_retorno.results; 
+
+       // console.log(this.lista_filmes);
     }, error =>{
       console.log(error);
     })

@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 export class MoovieProvider {
 
   private baseApiPath = "https://api.themoviedb.org/3";
-  private key = ""; //não esquecer de deixar em branco quando subir no github e coloca no readme informando que é necessario fazer o cadastro e gerar essa chave
+  private key = ""; // para api funcinar é necessario fazer o cadastro no site https://www.themoviedb.org/ e gerar a chave, cada pessoa tem a sua chave individual
 
   constructor(public http: Http) {
     console.log('Hello MoovieProvider Provider');
